@@ -49,7 +49,3 @@ class Menu
 
 end
 
-session = Menu.new
-
-welcome
-session.menu_input 
