@@ -17,10 +17,3 @@ class Event
 
 
 end
-
-hot_date = Event.new(1, "12/10/20", 12, "hot date", ["hopeful", "date"], "Can't wait")
-
-
-print hot_date.to_a
-
-test
