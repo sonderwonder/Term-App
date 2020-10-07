@@ -1,3 +1,5 @@
+require_relative 'event_repository'
+
 def welcome
     puts "\n"
     puts "Welcome To Organisi      o(^◇^)o"
@@ -29,7 +31,8 @@ class Menu
             when "1"
                 #Go to calender view 
             when "2"
-                #Go to create event in event.rb 
+                new_event_entry = EventRepository.new
+                new_event_entry.create_event
             when "3"
                 exit
             else 
@@ -46,6 +49,9 @@ class Menu
         input = launch_menu
         menu_options(input)
     end
+
+    
+    
 
 end
 
