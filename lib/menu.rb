@@ -8,7 +8,7 @@ end
 class Menu
 
     def initialize 
-
+        @event_repository = EventRepository.new
     end 
 
     def welcome
@@ -25,33 +25,22 @@ class Menu
         gets.chomp
     end
 
-    def menu_options(input)
+    def menu_options
         loop do 
-            case input 
+            case launch_menu 
             when "1"
                 #Go to calender view 
             when "2"
-                new_event_entry = EventRepository.new({})
-                new_event_entry.create_event
+                @event_repository.create_event
             when "3"
                 exit
             else 
                 puts "\n"
                 puts "|Input not recognised ¯\\_(ツ)_/¯ Please type menu option '#'|"
-                menu_input
             end
-            break
         end
-
     end 
 
-    def menu_input 
-        input = launch_menu
-        menu_options(input)
-    end
-
-    
-    
 
 end
 
