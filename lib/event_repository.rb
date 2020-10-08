@@ -1,16 +1,29 @@
 require_relative 'event'
+require 'json'
 
 class EventRepository 
-  attr_accessor :event 
+  attr_accessor :event_data 
 
   include OrganisiData
 
-  def initialize 
-    
+  def initialize(event_data)
+    @event_data = event_data
   end 
 
   def read_event 
 
+  end
+
+  #def write_event 
+  #  new_event = EventRepository.new
+  #  new_event.event_data = event_data
+  #  new_event.event_data
+  #end 
+
+  def store_event_data 
+    File.open("public/events.json","w") do |f|
+      f.write(JSON.pretty_generate(self.event_data))
+    end
   end
 
   def create_event
@@ -22,20 +35,16 @@ class EventRepository
       event[:tags],
       event[:notes]
     )
-    print new_event 
-  end
-
-  def store_event 
-    #Needs to save json string to events.json file 
+    self.event_data = event 
+    self.store_event_data
   end
 
   def create_event_loop
     event = {}
     EVENT.each do |input|
       puts "What is the #{input} of your event?"
-      puts "> "
+      puts " "
       event[input] = gets.chomp
-      
     end
     event
   end

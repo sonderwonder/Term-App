@@ -14,14 +14,6 @@ class Event
         @notes = notes 
     end
 
-    def to_hash
-        #needs to convert the info in an object into a hash 
-    end
-
-    def json_string
-        #need  to convert the event hash into a string 
-    end
-
 
 end
 

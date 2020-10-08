@@ -31,7 +31,7 @@ class Menu
             when "1"
                 #Go to calender view 
             when "2"
-                new_event_entry = EventRepository.new
+                new_event_entry = EventRepository.new({})
                 new_event_entry.create_event
             when "3"
                 exit
