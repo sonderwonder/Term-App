@@ -11,7 +11,7 @@ class EventRepository
   end 
 
   def read_event 
-
+   
   end
 
   #def write_event 
@@ -21,8 +21,11 @@ class EventRepository
   #end 
 
   def store_event_data 
-    File.open("public/events.json","w") do |f|
-      f.write(JSON.pretty_generate(self.event_data))
+    filename = 'public/events.json'
+    existing_json = JSON.parse(File.read(filename))
+    existing_json << self.event_data
+    File.open(filename,"w") do |f|
+      f.write(JSON.pretty_generate(existing_json))
     end
   end
 
